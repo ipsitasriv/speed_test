@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Test Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="game-card">
+      <header class="topbar">
+        <div>
+          <h1>Typing Speed Test</h1>
+          <p class="subtitle">Practice accuracy, speed, and consistency.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="controls-row">
+        <div class="control-group">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" aria-label="Select difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="control-group buttons">
+          <button id="restartBtn" class="primary-btn">Restart</button>
+          <button id="newParagraphBtn" class="secondary-btn">New Paragraph</button>
+        </div>
+      </section>
+
+      <section class="timer-section">
+        <div class="timer-header">
+          <span>Time Left</span>
+          <span id="timeLeft">60s</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </section>
+
+      <section class="typing-area">
+        <div class="paragraph-box" id="paragraphBox" tabindex="0" aria-label="Typing test paragraph">
+          <p id="paragraph" class="paragraph"></p>
+          <div id="fakeCursor" class="fake-cursor" aria-hidden="true"></div>
+        </div>
+
+        <input
+          type="text"
+          id="hiddenInput"
+          class="hidden-input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-hidden="true"
+        />
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <h2>WPM</h2>
+          <p id="wpm">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>CPM</h2>
+          <p id="cpm">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Accuracy</h2>
+          <p id="accuracy">100%</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Mistakes</h2>
+          <p id="mistakes">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Correct Chars</h2>
+          <p id="correctChars">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>High Score</h2>
+          <p id="highScore">0</p>
+        </article>
+      </section>
+
+      <footer class="footer-note">
+        <p>
+          Shortcuts: <strong>Enter</strong> = Restart, <strong>Esc</strong> = New Paragraph
+        </p>
+      </footer>
+    </section>
+  </main>
+
+  <section id="summaryModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <h2>Test Complete</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span>Final WPM</span>
+          <strong id="finalWpm">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Accuracy</span>
+          <strong id="finalAccuracy">0%</strong>
+        </div>
+        <div class="summary-item">
+          <span>Mistakes</span>
+          <strong id="finalMistakes">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Time Taken</span>
+          <strong id="finalTime">60s</strong>
+        </div>
+        <div class="summary-item">
+          <span>High Score</span>
+          <strong id="finalHighScore">0</strong>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="closeModalBtn" class="primary-btn">Close</button>
+      </div>
+    </div>
+  </section>
+
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
